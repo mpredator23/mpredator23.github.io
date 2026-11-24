@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Hajj Monitor — Studi Kasus · Miftahul Ulum</title>
+<meta name="description" content="Studi kasus Smart Hajj Monitor: sistem klasifikasi risiko kesehatan jemaah haji berbasis Random Forest dan Flutter. Akurasi 95,5%.">
+<link rel="icon" href="../assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/case.css">
+</head>
+<body class="case-page">
+
+<header class="nav scrolled" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="" width="34" height="34">
+      <span>Miftahul Ulum</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="../index.html#tentang">Tentang</a>
+      <a href="../index.html#proyek">Proyek</a>
+      <a href="../index.html#keahlian">Keahlian</a>
+      <a href="../index.html#kontak" class="nav-cta">Kontak</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="case-hero">
+    <div class="wrap">
+      <a class="back" href="../index.html">← Kembali ke portofolio</a>
+      <div class="project-tags">
+        <span>Skripsi</span><span>Flutter</span><span>FastAPI</span><span>Random Forest</span><span>MySQL</span>
+      </div>
+      <h1>Smart Hajj Monitor</h1>
+      <p class="case-sub">
+        Sistem klasifikasi risiko kesehatan jemaah haji dan umrah berbasis mobile
+        untuk monitoring kondisi kesehatan secara real-time.
+      </p>
+
+      <ul class="case-meta">
+        <li><span>Peran</span><strong>Peneliti &amp; Developer</strong></li>
+        <li><span>Tahun</span><strong>2026</strong></li>
+        <li><span>Jenis</span><strong>Skripsi / Tugas Akhir</strong></li>
+        <li><span>Institusi</span><strong>Universitas Sains dan Teknologi Indonesia</strong></li>
+      </ul>
+
+      <div class="case-metrics">
+        <div><strong>95,5%</strong><span>Akurasi model</span></div>
+        <div><strong>93,8%</strong><span>5-Fold Cross Validation</span></div>
+        <div><strong>0,97</strong><span>Recall risiko tinggi</span></div>
+        <div><strong>91,8%</strong><span>Penerimaan pengguna (UAT)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MASALAH ============ -->
+  <section class="case-section">
+    <div class="wrap narrow">
+      <p class="kicker">01 — Masalah</p>
+      <h2>Pemantauan masih manual, respons jadi lambat</h2>
+      <p>
+        Di tengah kepadatan massa saat puncak haji, kondisi kesehatan jemaah dapat menurun
+        dengan cepat — heatstroke, dehidrasi, hingga serangan jantung. Namun pencatatan
+        keluhan masih dilakukan secara manual, sehingga petugas kesehatan tidak memiliki
+        gambaran kondisi terkini dan sering terlambat mengetahui siapa yang benar-benar kritis.
+      </p>
+      <div class="callout">
+        <strong>Hasil wawancara lapangan</strong>
+        <p>
+          Penelitian ini diawali wawancara dengan tiga jemaah haji/umrah dan staf pembimbing
+          di Muhibbah Travel. Temuan utamanya: keluhan kesehatan umumnya disampaikan secara
+          lisan, tidak terdokumentasi, dan tidak ada mekanisme peringatan dini.
+        </p>
+      </div>
+      <p>
+        Pertanyaan penelitiannya: <em>bagaimana mengubah laporan kesehatan yang bersifat
+        subjektif menjadi tingkat risiko yang terukur, dan menyampaikannya ke petugas
+        sebelum kondisi memburuk?</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SOLUSI ============ -->
+  <section class="case-section alt">
+    <div class="wrap">
+      <p class="kicker">02 — Solusi</p>
+      <h2 class="narrow">Tiga lapis: input jemaah, klasifikasi, peringatan</h2>
+
+      <div class="flow">
+        <div class="flow-node">
+          <span class="flow-num">1</span>
+          <h3>Jemaah mengisi</h3>
+          <p>Formulir <em>self-assessment</em> berisi sembilan parameter: usia, jenis kelamin, suhu tubuh, gejala, kondisi umum, riwayat penyakit, dan keluhan lain.</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-node">
+          <span class="flow-num">2</span>
+          <h3>Model mengklasifikasi</h3>
+          <p>Random Forest (100 pohon, <code>max_depth=6</code>) memberi label <strong>Rendah</strong>, <strong>Sedang</strong>, atau <strong>Tinggi</strong> beserta probabilitas dan rekomendasi tindakan.</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-node">
+          <span class="flow-num">3</span>
+          <h3>Petugas menerima</h3>
+          <p>Hasil masuk ke dashboard petugas. Risiko tinggi memicu notifikasi WhatsApp; tombol SOS mengirim koordinat GPS ke peta Pusat Komando.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ARSITEKTUR ============ -->
+  <section class="case-section">
+    <div class="wrap">
+      <p class="kicker">03 — Arsitektur</p>
+      <h2>Bagaimana sistemnya disusun</h2>
+
+      <div class="arch">
+        <div class="arch-col">
+          <div class="arch-box client">
+            <h4>Aplikasi Jemaah</h4>
+            <p>Flutter · Provider · GoRouter</p>
+          </div>
+          <div class="arch-box client">
+            <h4>Aplikasi Petugas</h4>
+            <p>Flutter · flutter_map · fl_chart</p>
+          </div>
+        </div>
+        <div class="arch-arrow" aria-hidden="true">→</div>
+        <div class="arch-col">
+          <div class="arch-box server">
+            <h4>REST API</h4>
+            <p>FastAPI · JWT · SQLAlchemy</p>
+            <ul>
+              <li><code>/auth</code> — login, Google OAuth, RBAC</li>
+              <li><code>/assessments</code> — klasifikasi &amp; riwayat</li>
+              <li><code>/sos</code> — sinyal darurat + koordinat</li>
+              <li><code>/notifications</code> — peringatan dini</li>
+            </ul>
+          </div>
+        </div>
+        <div class="arch-arrow" aria-hidden="true">→</div>
+        <div class="arch-col">
+          <div class="arch-box data">
+            <h4>Random Forest</h4>
+            <p>scikit-learn · joblib</p>
+          </div>
+          <div class="arch-box data">
+            <h4>MySQL</h4>
+            <p>users · assessments · sos</p>
+          </div>
+          <div class="arch-box data">
+            <h4>WhatsApp Gateway</h4>
+            <p>Fonnte API</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALERI ============ -->
+  <section class="case-section alt">
+    <div class="wrap">
+      <p class="kicker">04 — Antarmuka</p>
+      <h2>Tampilan aplikasi</h2>
+
+      <h3 class="gallery-title">Aplikasi Jemaah</h3>
+      <div class="shots">
+        <figure class="shot"><img src="../assets/img/screenshots/01-registrasi.jpg" alt="Halaman registrasi jemaah" loading="lazy"><figcaption>Registrasi akun</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/screenshots/02-login-jemaah.jpg" alt="Halaman login jemaah" loading="lazy"><figcaption>Login jemaah</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/screenshots/03-beranda-jemaah.jpg" alt="Beranda jemaah" loading="lazy"><figcaption>Beranda jemaah</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/screenshots/04-assessment.jpg" alt="Formulir self-assessment" loading="lazy"><figcaption>Formulir self-assessment</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/screenshots/05-hasil-ai.jpg" alt="Hasil rekam medis dan rekomendasi AI" loading="lazy"><figcaption>Hasil &amp; rekomendasi AI</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/screenshots/12-risiko-tinggi.jpg" alt="Hasil klasifikasi risiko tinggi" loading="lazy"><figcaption>Klasifikasi risiko tinggi</figcaption></figure>
+      </div>
+
+      <h3 class="gallery-title">Aplikasi Petugas Kesehatan</h3>
+      <div class="shots">
+        <figure class="shot"><img src="../assets/img/screenshots/06-login-petugas.jpg" alt="Login petugas kesehatan" loading="lazy"><figcaption>Login petugas</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/screenshots/07-beranda-petugas.jpg" alt="Beranda petugas kesehatan" loading="lazy"><figcaption>Beranda petugas</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/screenshots/08-analisis.jpg" alt="Pusat analisis" loading="lazy"><figcaption>Pusat analisis</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/screenshots/09-direktori.jpg" alt="Direktori jemaah" loading="lazy"><figcaption>Direktori jemaah</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/screenshots/10-sos-peta.jpg" alt="Peta Pusat Komando SOS" loading="lazy"><figcaption>Peta Pusat Komando SOS</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/screenshots/11-profil-petugas.jpg" alt="Profil petugas" loading="lazy"><figcaption>Profil petugas</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/screenshots/14-sos-komando.jpg" alt="Notifikasi darurat SOS di peta" loading="lazy"><figcaption>Indikator darurat SOS</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/screenshots/13-notifikasi-wa.jpg" alt="Notifikasi WhatsApp peringatan medis" loading="lazy"><figcaption>Notifikasi WhatsApp</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HASIL ============ -->
+  <section class="case-section">
+    <div class="wrap">
+      <p class="kicker">05 — Hasil</p>
+      <h2>Performa model</h2>
+      <p class="narrow">
+        Diuji pada 200 data uji (20% dari 1.000 record), dengan <code>n_estimators=100</code>
+        dan <code>max_depth=6</code>.
+      </p>
+
+      <div class="table-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>Kelas Risiko</th><th>Precision</th><th>Recall</th><th>F1-Score</th><th>Support</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Rendah</td><td>1,00</td><td>0,40</td><td>0,57</td><td>10</td></tr>
+            <tr><td>Sedang</td><td>0,92</td><td>1,00</td><td>0,96</td><td>104</td></tr>
+            <tr><td>Tinggi</td><td>1,00</td><td>0,97</td><td>0,98</td><td>86</td></tr>
+            <tr class="total"><td>Akurasi keseluruhan</td><td colspan="3">95,5%</td><td>200</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <strong>Kenapa recall jadi prioritas?</strong>
+        <p>
+          Untuk sistem peringatan dini, kesalahan yang paling berbahaya adalah <em>melewatkan</em>
+          jemaah berisiko tinggi. Model mencapai recall 0,97 pada kelas Tinggi — artinya hampir
+          seluruh kasus kritis berhasil terjaring.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PENGUJIAN ============ -->
+  <section class="case-section alt">
+    <div class="wrap">
+      <p class="kicker">06 — Pengujian</p>
+      <h2>Bukan hanya model yang diuji</h2>
+
+      <div class="table-wrap">
+        <table class="tbl">
+          <thead><tr><th>Jenis Pengujian</th><th>Cakupan</th><th>Hasil</th></tr></thead>
+          <tbody>
+            <tr><td>Black Box Testing</td><td>Form, klasifikasi, SOS, notifikasi, filter, pencarian</td><td>Seluruh fungsi valid</td></tr>
+            <tr><td>UAT — Jemaah</td><td>14 responden (usia 19–70), 7 butir, Skala Likert</td><td>91,8% — Sangat Layak</td></tr>
+            <tr><td>UAT — Petugas</td><td>Perwakilan petugas kesehatan, 10 butir</td><td>88,0% — Sangat Layak</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TANTANGAN ============ -->
+  <section class="case-section">
+    <div class="wrap narrow">
+      <p class="kicker">07 — Tantangan</p>
+      <h2>Yang paling sulit dikerjakan</h2>
+
+      <div class="challenge">
+        <h3>Menyatukan dua disiplin dalam satu aplikasi</h3>
+        <p>
+          Model machine learning dan aplikasi mobile hidup di dua dunia berbeda. Tantangan
+          terbesarnya bukan melatih model, tapi memastikan format data dari form Flutter
+          konsisten dengan <em>preprocessor</em> yang dilatih di Python — termasuk urutan kolom
+          dan encoding kategori. Solusinya: menyimpan <code>ColumnTransformer</code> bersama
+          model, lalu memvalidasi skema input lewat Pydantic sebelum menyentuh model.
+        </p>
+      </div>
+
+      <div class="challenge">
+        <h3>Menjaga pengalaman pengguna untuk jemaah lansia</h3>
+        <p>
+          Responden UAT termuda 19 tahun dan tertua 70 tahun. Formulir harus tetap terbaca
+          tanpa pelatihan: label besar, warna status yang jelas (hijau/kuning/merah), dan
+          rekomendasi tindakan yang ditulis sebagai instruksi konkret — bukan istilah medis.
+        </p>
+      </div>
+
+      <div class="challenge">
+        <h3>Membuat alur darurat tetap sederhana</h3>
+        <p>
+          Tombol SOS harus bekerja dalam kondisi panik: satu ketukan, langsung mengirim
+          koordinat, dan titik merah muncul di peta petugas. Alur ini diuji lewat black box
+          testing bersama alur klasifikasi risiko tinggi.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIMITASI ============ -->
+  <section class="case-section alt">
+    <div class="wrap narrow">
+      <p class="kicker">08 — Limitasi</p>
+      <h2>Apa yang belum selesai</h2>
+      <ul class="limits">
+        <li><strong>Data simulasi.</strong> Dataset dibangkitkan sintetis (1.000 record), bukan rekam medis nyata. Model belum divalidasi secara klinis.</li>
+        <li><strong>Ketidakseimbangan kelas.</strong> Kelas Rendah hanya memiliki 10 sampel uji sehingga recall-nya 0,40. Perlu SMOTE atau penambahan data.</li>
+        <li><strong>Push notification belum aktif.</strong> Integrasi Firebase/FCM masih berupa <em>mock</em>; notifikasi berjalan lewat WhatsApp gateway dan notifikasi lokal.</li>
+        <li><strong>Skala UAT terbatas.</strong> 14 responden jemaah, belum uji lapangan berskala besar.</li>
+        <li><strong>GPS belum dioptimasi</strong> untuk area kepadatan ekstrem seperti Masjidil Haram atau Arafah.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ TAUTAN ============ -->
+  <section class="case-section">
+    <div class="wrap narrow center">
+      <p class="kicker">Tautan</p>
+      <h2>Lihat lebih dekat</h2>
+      <div class="case-links">
+        <a class="btn btn-gold" href="https://github.com/mpredator23/Smart-Hajj-Monitor" target="_blank" rel="noopener">Kode Sumber</a>
+        <a class="btn btn-ghost" href="../assets/abstrak.pdf" target="_blank" rel="noopener">Abstrak Skripsi</a>
+        <a class="btn btn-ghost" href="../index.html#kontak">Hubungi Saya</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <p>© 2026 Miftahul Ulum, S.Kom.</p>
+    <p><a href="../index.html">← Kembali ke portofolio</a></p>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
